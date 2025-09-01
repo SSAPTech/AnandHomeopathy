@@ -7,60 +7,144 @@
   <link rel="stylesheet" href="css/style.css" type="text/css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --header-bg: rgb(249, 186, 67);
+      --aside-bg: rgb(163, 237, 213);
+      --card-bg: #ffffff;
+    }
 
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #ffffff;
+      --header-bg: #000000;
+      --aside-bg: #2a2a2a;
+      --card-bg: #2a2a2a;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--header-bg) !important;
+      color: var(--text-color) !important;
+    }
+
+    aside {
+      background-color: var(--aside-bg) !important;
+    }
+
+    .bg-white {
+      background-color: var(--card-bg) !important;
+    }
+
+    .text-gray-600,
+    .text-gray-700,
+    .text-black {
+      color: var(--text-color) !important;
+    }
+
+    .theme-toggle-btn {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1px solid #000000;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .theme-toggle-btn {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+
+    [data-theme="dark"] .theme-toggle-btn:hover {
+      background-color: #333333;
+    }
+
+    [data-theme="dark"] header h1,
+    [data-theme="dark"] header a,
+    [data-theme="dark"] header button {
+      color: #ffffff !important;
+    }
+  </style>
 </head>
 <body class="bg-gray-50">
-  <header class="bg-cover bg-center text-white p-4 shadow-xl fixed w-full z-20" style="background-color: rgb(249, 186, 67);">
+   <header class="bg-cover bg-center text-white p-4 shadow-xl fixed w-full z-20" style="background-color: rgb(249, 186, 67);">
     <div class="container mx-auto flex justify-between items-center">
-      <div class="animate-slide-in">
-        <a href="index.html"><img src="images/logo.png" alt="Anand Homeopathy Logo" class="h-20"></a>
+      <div class="animate-slide-in" style="display: flex; align-items: center;">
+        <a href="index.html"><img src="images/logo2.png" alt="Anand Homeopathy Logo" class="h-16 md:h-20" width="150px"></a>
+        <h1 class="text-lg font-semibold" style="margin-left: 80px; font-size: 44px; color: black; font-family: cursive;">Anand Homeopathy</h1>
       </div>
-      <nav>
-        <ul class="flex space-x-6">
+      <nav id="nav-menu" class="hidden md:flex md:items-center" style="margin-left: 350px;">
+        <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
           <li><a href="index.html" class="px-4 py-2 rounded hover:bg-green-600 hover:text-white transition duration-300">Home</a></li>
-          <li><a href="about.html" class="px-4 py-2 rounded hover:bg-green-600 hover:text-white transition duration-300">About Us</a></li>
-          <li><a href="blog.html" class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700 transition duration-300">Blog</a></li>
-          <li><a href="contact.html" class="px-4 py-2 rounded hover:bg-green-600 hover:text-white transition duration-300">Contact Us</a></li>
+          <li><a href="about.html" class="px-4 py-2 rounded hover:bg-green-600 hover:text-white transition duration-300">About</a></li>
+          <li><a href="blog.html" class="px-4 py-2 rounded hover:bg-green-600 hover:text-white transition duration-300">Blog</a></li>
+          <li><a href="contact.html" class="px-4 py-2 rounded hover:bg-green-600 hover:text-white transition duration-300">Contact</a></li>
+       <li><a href="email.html" class="px-4 py-2 rounded  hover:bg-green-600 hover:text-white transition duration-300">Email</a></li>
         </ul>
       </nav>
+      <div class="flex items-center">
+        <button id="menu-toggle" class="text-white text-2xl md:hidden focus:outline-none">
+          <i class="fa fa-bars"></i>
+        </button>
+        <button id="theme-toggle" class="theme-toggle-btn">
+          <i class="bi bi-brilliance"></i>
+        </button>
+      </div>
     </div>
   </header>
 
-  <div class="flex flex-col md:flex-row pt-24">
-    <aside class="fixed w-48 bg-gray-200 p-4 shadow-lg animate-slide-in-left h-screen z-10" style="margin-top: 20px; background-color:rgb(166, 194, 185)">
-      <h3 class="text-lg font-semibold text-black-700 mb-3">About Homeopathy</h3>
+  <div class="flex flex-col md:flex-row pt-20 md:pt-24">
+    <aside class="w-full md:w-64 md:fixed md:h-screen bg-gray-200 p-4 shadow-lg animate-slide-in-left z-10" style="background-color: rgb(163, 237, 213);">
+      <h3 class="text-lg font-semibold text-black mb-1 mt-3" style="font-style: sans-serif;">ABOUT HOMEOPATHY</h3>
       <p class="text-gray-600 text-sm mb-4">
         Homeopathy uses natural remedies to stimulate the body’s healing processes. Learn more about our holistic approach.
       </p>
-      <h3 class="text-lg font-semibold text-black-700 mb-3">Quick Links</h3>
+      <h3 class="text-lg font-semibold text-black mb-3">Quick Links</h3>
       <ul class="space-y-2 text-sm">
-        <li><a href="#" class="text-black-600  hover:underline"><i class="bi bi-facebook mr-2"></i>Facebook</a></li>
-        <li><a href="#" class="text-black-600  hover:underline"><i class="bi bi-twitter mr-2"></i>Twitter</a></li>
-        <li><a href="#" class="text-black-600  hover:underline"><i class="bi bi-envelope mr-2"></i>Subscribe</a></li>
+        <li><a href="#" class="text-black hover:underline"><i class="bi bi-facebook mr-2"></i>Facebook</a></li>
+        <li><a href="#" class="text-black hover:underline"><i class="bi bi-twitter mr-2"></i>Twitter</a></li>
+        <li><a href="#" class="text-black hover:underline"><i class="bi bi-envelope mr-2"></i>Subscribe</a></li>
       </ul>
-      <h3 class="text-lg font-semibold text-black-700 mb-3 mt-4">Contact</h3>
+      <h3 class="text-lg font-semibold text-black mb-3 mt-4">Contact</h3>
       <div class="space-y-2 text-sm">
         <div class="flex items-center text-gray-600">
           <i class="fa fa-phone mr-2"></i>
-          <span>+919822287988</span>
+          <span class="hover:underline cursor-pointer">+919822287988</span>
         </div>
         <div class="flex items-center text-gray-600">
           <i class="fa fa-envelope mr-2"></i>
-          <span class="break-words">drsantoshkharat2007@rediffmail.com</span>
+          <span class="break-words hover:underline cursor-pointer">drsantoshkharat2007@rediffmail.com</span>
         </div>
       </div>
     </aside>
 
-    <main class="w-full md:ml-48 p-6">
+    <main class="w-full md:ml-64 p-4 md:p-6">
       <div class="container mx-auto">
-        <h1 class="text-4xl font-bold text-green-700 mb-8 animate-slide-in-left">Blog</h1>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 duration-300">
-            <img src="images/Homeopathy/img9.jpg" alt="Homeopathic Tips" class="w-full h-48 object-cover rounded-lg mb-4">
-            <h3 class="text-2xl font-semibold text-green-600 mb-2">Do It Yourself Homeopathic Tips <span class="text-gray-500 text-sm">(3/12/2045)</span></h3>
-            <p class="text-gray-600 mb-4 text-lg">
+        <h1 class="text-3xl md:text-4xl font-bold text-green-700 mb-8 animate-slide-in-left">Blog</h1>
+        <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 duration-300">
+            <img src="images/tips.png" alt="Homeopathic Tips" class="w-full h-40 md:h-48 object-cover rounded-lg mb-4">
+            <h3 class="text-xl md:text-2xl font-semibold text-green-600 mb-2">Do It Yourself Homeopathic Tips <span class="text-gray-500 text-sm">(3/12/2045)</span></h3>
+            <p class="text-gray-600 mb-4 text-base md:text-lg">
               Explore simple homeopathic remedies you can try at home to support your wellness journey.
             </p>
             <div class="flex space-x-4">
@@ -69,10 +153,10 @@
               <a href="#" class="text-green-600 hover:text-green-800"><i class="bi bi-facebook"></i></a>
             </div>
           </div>
-          <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 duration-300">
-            <img src="images/Homeopathy/img10.jpg" alt="Homeopathic Diet" class="w-full h-48 object-cover rounded-lg mb-4">
-            <h3 class="text-2xl font-semibold text-green-600 mb-2">Benefits of a Homeopathic Diet <span class="text-gray-500 text-sm">(29/11/2045)</span></h3>
-            <p class="text-gray-600 mb-4 text-lg">
+          <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 duration-300">
+            <img src="images/Balanced Diet .jpg" alt="Homeopathic Diet" class="w-full h-40 md:h-48 object-cover rounded-lg mb-4">
+            <h3 class="text-xl md:text-2xl font-semibold text-green-600 mb-2">Benefits of a Homeopathic Diet <span class="text-gray-500 text-sm">(29/11/2045)</span></h3>
+            <p class="text-gray-600 mb-4 text-base md:text-lg">
               Learn how a balanced diet complements homeopathic treatments for optimal health.
             </p>
             <div class="flex space-x-4">
@@ -82,9 +166,9 @@
             </div>
           </div>
         </div>
-        <div class="mt-8 bg-white p-6 rounded-xl shadow-lg animate-fade-in" style="background-image: url('images/Homeopathy/bg-content.jpg'); background-size: cover;">
-          <h3 class="text-2xl font-semibold text-green-600 mb-4">Archives</h3>
-          <div class="flex flex-col space-y-2 text-lg">
+        <div class="mt-8 bg-white p-6 md:p-8 rounded-xl shadow-lg animate-fade-in bg-content-overlay" style="background-image: url('images/Homeopathy/bg-content.jpg'); background-size: cover;">
+          <h3 class="text-xl md:text-2xl font-semibold text-green-600 mb-4">Archives</h3>
+          <div class="flex flex-col space-y-2 text-base md:text-lg">
             <a href="#" class="text-green-600 hover:text-green-800">2045 (60)</a>
             <div class="ml-4 flex flex-col space-y-1">
               <a href="#" class="text-gray-600 hover:text-green-600">December (1)</a>
@@ -97,32 +181,75 @@
             <a href="#" class="text-green-600 hover:text-green-800">2009</a>
           </div>
         </div>
+        <a href="index.html" class="fixed bottom-6 right-6 bg-green-600 text-white   hover:bg-green-700 transition duration-300 font-semibold z-10 flex items-center gap-2" style="padding: 10px; border-radius: 50%; text-align: center; justify-content: center; align-items: center; width: 50px; height: 50px; text-align: center;">
+          <i class="fa fa-home" style="margin-left: 5px; margin-bottom: 4px; font-size: 20px;"></i>
+          <span></span>
+        </a>
       </div>
     </main>
   </div>
 
-   <div id="footer">
-  <div>
-    <ul>
-      <li> <img src="images/medicine.png" alt="">
-        <!--<h4>The best option</h4>
-        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta.</p>-->
-      </li>
-      <li> <img src="images/exercise.png" alt="">
-        <!--<h4>Program exercises</h4>
-        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta.</p>-->
-      </li>
-      <li> <img src="images/fruits.png" alt="">
-        <!--<h4>Why fruits?</h4>
-        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta.</p>-->
-      </li>
-      <li> <img src="images/orange.png" alt="">
-        <!--<h4>Healthy eating</h4>
-        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta.</p>-->
-      </li>
-    </ul>
-    <p class="footnote">Copyright &copy; 2017 <a href="#">SSAPTECH Solutions LLP</a> All rights reserved | Design By: <a href="http://www.ssaptech.com/">ssaptech.com</a></p>
+  <div id="footer">
+    <div>
+      <ul>
+        <li>
+          <img src="images/medicine.png" alt="Medicine">
+          <p>Explore our high-quality homeopathic remedies tailored to your needs.</p>
+        </li>
+        <li>
+          <img src="images/exercise.png" alt="Exercise">
+          <p>Complement your treatment with guided wellness exercises.</p>
+        </li>
+        <li>
+          <img src="images/fruits.png" alt="Fruits">
+          <p>Learn how a balanced diet supports homeopathic healing.</p>
+        </li>
+        <li>
+          <img src="images/orange.png" alt="Healthy Eating">
+          <p>Discover nutrition tips to enhance your well-being.</p>
+        </li>
+      </ul>
+      <p class="footnote">Copyright &copy; 2017 <a href="#">SSAPTECH Solutions LLP</a> All rights reserved | Design By: <a href="http://www.ssaptech.com/">ssaptech.com</a></p>
+    </div>
   </div>
-</div>  
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Menu toggle for mobile
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+      navMenu.classList.toggle('mobile-open');
+    });
+
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.add('hidden');
+        navMenu.classList.remove('mobile-open');
+      });
+    });
+
+    // Theme toggle functionality
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const icon = themeToggle.querySelector('i');
+      icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
+      themeToggle.childNodes[1].textContent = '';
+    };
+
+    // Check for saved theme in localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    });
+  </script>
 </body>
 </html>

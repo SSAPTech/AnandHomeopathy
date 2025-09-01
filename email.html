@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anand Homeopathy - Email Signup</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --header-bg: rgb(249, 186, 67);
+      --aside-bg: rgb(163, 237, 213);
+      --card-bg: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #ffffff;
+      --header-bg: #000000;
+      --aside-bg: #2a2a2a;
+      --card-bg: #2a2a2a;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    aside {
+      background-color: var(--aside-bg) !important;
+    }
+
+    .bg-white {
+      background-color: var(--card-bg) !important;
+    }
+
+    .text-gray-600,
+    .text-gray-700,
+    .text-black {
+      color: var(--text-color) !important;
+    }
+
+    .theme-toggle-btn {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1px solid #000000;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .theme-toggle-btn {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+
+    [data-theme="dark"] .theme-toggle-btn:hover {
+      background-color: #333333;
+    }
+
+    [data-theme="dark"] header h1,
+    [data-theme="dark"] header a,
+    [data-theme="dark"] header button {
+      color: #ffffff !important;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    [data-theme="dark"] .form-container {
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      font-size: 1rem;
+      transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #10b981;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .error {
+      color: #dc2626;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #10b981;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .home-btn {
+      background-color: var(--header-bg);
+      color: var(--text-color);
+    }
+
+    [data-theme="dark"] .home-btn {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+
+    /* Navigation link styles */
+    nav a {
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+
+    nav a.active {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] nav a {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] nav a.active {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <header class="bg-cover bg-center text-white p-4 shadow-xl fixed w-full z-20" style="background-color: rgb(249, 186, 67);">
+    <div class="container mx-auto flex justify-between items-center">
+      <div style="display: flex; align-items: center;">
+        <a href="index.html">
+          <img src="images/logo2.png" alt="Anand Homeopathy Logo" class="h-16 md:h-20" width="150px">
+        </a>
+        <h1 class="text-lg font-semibold" style="margin-left: 80px; font-size: 44px; color: black; font-family: cursive;">Anand Homeopathy</h1>
+      </div>
+      <nav id="nav-menu" class="hidden md:flex md:items-center" style="margin-left: 350px;">
+        <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+          <li><a href="index.html" class="px-4 py-2 rounded">Home</a></li>
+          <li><a href="about.html" class="px-4 py-2 rounded">About</a></li>
+          <li><a href="blog.html" class="px-4 py-2 rounded">Blog</a></li>
+          <li><a href="contact.html" class="px-4 py-2 rounded">Contact</a></li>
+          <li><a href="email.html" class="px-4 py-2 rounded active">Email</a></li>
+        </ul>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="theme-toggle-btn">
+          <i class="fa fa-moon"></i>
+          <span></span>
+        </button>
+        <button id="menu-toggle" class="text-white text-2xl md:hidden focus:outline-none">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex flex-col md:flex-row pt-20 md:pt-24">
+    <aside class="w-full md:w-64 md:fixed md:h-screen bg-gray-200 p-4 shadow-lg animate-slide-in-left z-10" style="background-color: rgb(163, 237, 213);">
+      <h3 class="text-lg font-semibold text-black mb-1 mt-3" style="font-style: sans-serif;">ABOUT HOMEOPATHY</h3>
+      <p class="text-gray-600 text-sm mb-4">
+        Homeopathy uses natural remedies to stimulate the body’s healing processes. Learn more about our holistic approach.
+      </p>
+      <h3 class="text-lg font-semibold text-black mb-3">Quick Links</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="text-black hover:underline"><i class="bi bi-facebook mr-2"></i>Facebook</a></li>
+        <li><a href="#" class="text-black hover:underline"><i class="bi bi-twitter mr-2"></i>Twitter</a></li>
+        <li><a href="#" class="text-black hover:underline"><i class="bi bi-envelope mr-2"></i>Subscribe</a></li>
+      </ul>
+      <h3 class="text-lg font-semibold text-black mb-3 mt-4">Contact</h3>
+      <div class="space-y-2 text-sm">
+        <div class="flex items-center text-gray-600">
+          <i class="fa fa-phone mr-2"></i>
+          <span class="hover:underline cursor-pointer">+919822287988</span>
+        </div>
+        <div class="flex items-center text-gray-600">
+          <i class="fa fa-envelope mr-2"></i>
+          <span class="break-words hover:underline cursor-pointer">drsantoshkharat2007@rediffmail.com</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="w-full md:ml-64 p-4 md:p-6">
+      <div class="container mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold text-green-700 mb-8 animate-slide-in-left">Email Signup</h1>
+        <div class="form-container">
+          <form id="signup-form" class="space-y-5">
+            <div>
+              <label for="username" class="form-label">Username</label>
+              <input type="text" id="username" name="username" class="form-input" required>
+              <p id="username-error" class="error hidden">Username must be at least 3 characters long</p>
+            </div>
+            <div>
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-input" required>
+              <p id="email-error" class="error hidden">Please enter a valid email address</p>
+            </div>
+            <div>
+              <label for="phone" class="form-label">Phone</label>
+              <input type="tel" id="phone" name="phone" class="form-input" required>
+              <p id="phone-error" class="error hidden">Please enter a valid phone number</p>
+            </div>
+            <div>
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" name="password" class="form-input" required>
+              <p id="password-error" class="error hidden">Password must be at least 6 characters long</p>
+            </div>
+            <div>
+              <label for="confirm-password" class="form-label">Confirm Password</label>
+              <input type="password" id="confirm-password" name="confirm-password" class="form-input" required>
+              <p id="confirm-password-error" class="error hidden">Passwords do not match</p>
+            </div>
+            <div>
+              <button type="submit" class="submit-btn">Submit</button>
+            </div>
+          </form>
+        </div>
+        <a href="index.html" class="fixed bottom-6 right-6 bg-green-600 text-white hover:bg-green-700 transition duration-300 font-semibold z-10 flex items-center gap-2" style="padding: 10px; border-radius: 50%; text-align: center; justify-content: center; align-items: center; width: 50px; height: 50px; text-align: center;">
+          <i class="fa fa-home" style="margin-left: 5px; margin-bottom: 4px; font-size: 20px;"></i>
+          <span></span>
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer">
+    <div>
+      <ul>
+        <li>
+          <img src="images/medicine.png" alt="Medicine">
+          <p>Explore our high-quality homeopathic remedies tailored to your needs.</p>
+        </li>
+        <li>
+          <img src="images/exercise.png" alt="Exercise">
+          <p>Complement your treatment with guided wellness exercises.</p>
+        </li>
+        <li>
+          <img src="images/fruits.png" alt="Fruits">
+          <p>Learn how a balanced diet supports homeopathic healing.</p>
+        </li>
+        <li>
+          <img src="images/orange.png" alt="Healthy Eating">
+          <p>Discover nutrition tips to enhance your well-being.</p>
+        </li>
+      </ul>
+      <p class="footnote">Copyright &copy; 2017 <a href="#">SSAPTECH Solutions LLP</a> All rights reserved | Design By: <a href="http://www.ssaptech.com/">ssaptech.com</a></p>
+    </div>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const themeToggle = document.getElementById('theme-toggle');
+    const signupForm = document.getElementById('signup-form');
+    const navLinks = navMenu.querySelectorAll('a');
+
+    // Menu toggle for mobile
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+      navMenu.classList.toggle('mobile-open');
+    });
+
+    // Set active navigation link
+    function setActiveNavLink() {
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // Run on page load
+    setActiveNavLink();
+
+    // Add click event to nav links to update active state
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        navMenu.classList.add('hidden');
+        navMenu.classList.remove('mobile-open');
+      });
+    });
+
+    // Theme toggle functionality
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const icon = themeToggle.querySelector('i');
+      icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
+      themeToggle.childNodes[1].textContent = '';
+    };
+
+    // Check for saved theme in localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    });
+
+    // Form validation
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Reset error messages
+      document.querySelectorAll('.error').forEach(error => error.classList.add('hidden'));
+
+      // Username validation
+      const username = document.getElementById('username').value;
+      if (username.length < 3) {
+        document.getElementById('username-error').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Email validation
+      const email = document.getElementById('email').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('email-error').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Phone validation
+      const phone = document.getElementById('phone').value;
+      const phoneRegex = /^\+?\d{10,15}$/;
+      if (!phoneRegex.test(phone)) {
+        document.getElementById('phone-error').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Password validation
+      const password = document.getElementById('password').value;
+      if (password.length < 6) {
+        document.getElementById('password-error').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Confirm password validation
+      const confirmPassword = document.getElementById('confirm-password').value;
+      if (password !== confirmPassword) {
+        document.getElementById('confirm-password-error').classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Form submitted successfully!');
+        signupForm.reset();
+      }
+    });
+  </script>
+</body>
+</html>
